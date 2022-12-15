@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
-import shareIcon from '../images/shareIcon.svg';
+import shareIconGreen from '../images/shareIconGreen.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import './RecipeInProgress.css';
@@ -180,45 +180,50 @@ function RecipeInProgress() {
   };
 
   return (
-    <div>
-      <button
-        data-testid="share-btn"
-        type="button"
-        onClick={ handleShare }
-      >
-        <img src={ shareIcon } alt="shareIcon.svg" />
-      </button>
-      <button
-        type="button"
-        onClick={ handleFavorite }
-      >
+    <div className="in-progress">
+      <div className="details-header">
         <img
-          data-testid="favorite-btn"
-          src={ isFavorite()
-            ? blackHeartIcon : whiteHeartIcon }
-          alt="favorite icon"
+          className="thumb"
+          data-testid="recipe-photo"
+          src={ recipe[`str${category}Thumb`] }
+          alt=""
         />
-      </button>
-      {copied && <p>Link copied!</p>}
-      {recipe && (
-        <div>
-          {category !== 'Drink'
-            ? <p data-testid="recipe-category">{recipe.strCategory}</p>
-            : <p data-testid="recipe-category">{recipe.strAlcoholic}</p>}
-          <h3 data-testid="recipe-title">{recipe[`str${category}`]}</h3>
-          <img
-            width="150px"
-            data-testid="recipe-photo"
-            src={ recipe[`str${category}Thumb`] }
-            alt=""
-          />
-          {filterIngredients.map((ingredient, index) => (
-            <div key={ index }>
-              <label
-                htmlFor={ `${index}-ingredient-step` }
-                className={ checked[index] ? 'decoration' : '' }
-                data-testid={ `${index}-ingredient-step` }
+        <div className="header-content">
+          <div className="row">
+            {category !== 'Drink'
+              ? <p className="category" data-testid="recipe-category">{recipe.strCategory}</p>
+              : <p className="category" data-testid="recipe-category">{recipe.strAlcoholic}</p>}
+            <div className="spacer" />
+            <div className="buttons-container">
+              <button
+                data-testid="share-btn"
+                type="button"
+                onClick={ handleShare }
               >
+                <img src={ shareIconGreen } alt="shareIcon.svg" />
+              </button>
+              <button
+                type="button"
+                onClick={ handleFavorite }
+              >
+                <img
+                  data-testid="favorite-btn"
+                  src={ isFavorite()
+                    ? blackHeartIcon : whiteHeartIcon }
+                  alt="favorite icon"
+                />
+              </button>
+            </div>
+            {copied && <p>Link copied!</p>}
+          </div>
+          <h3 className="recipe-titles" data-testid="recipe-title">{recipe[`str${category}`]}</h3>
+        </div>
+      </div>
+      {recipe && (
+        <div className="content">
+          <div className="text-card">
+            {filterIngredients.map((ingredient, index) => (
+              <div className="checkbox" key={ index }>
                 <input
                   type="checkbox"
                   id={ `${index}-ingredient-step` }
@@ -227,19 +232,29 @@ function RecipeInProgress() {
                   checked={ checked[index] }
                   onChange={ () => handleFilters(index) }
                 />
-                {`${ingredient} ${filteredMeasures[index] !== undefined
-                  ? filteredMeasures[index]
-                  : ''}`}
-              </label>
-            </div>
-          ))}
-          <p data-testid="instructions">{recipe.strInstructions}</p>
+                <label
+                  htmlFor={ `${index}-ingredient-step` }
+                  className={ checked[index] ? 'decoration' : '' }
+                  data-testid={ `${index}-ingredient-step` }
+                >
+                  {`${ingredient} ${filteredMeasures[index] !== undefined
+                    ? filteredMeasures[index]
+                    : ''}`}
+                </label>
+              </div>
+            ))}
+          </div>
+          <div className="text-card">
+            <p data-testid="instructions">{recipe.strInstructions}</p>
+          </div>
+
           { category !== 'Drink' && <iframe
             data-testid="video"
             src={ `https://www.youtube.com/embed/${getVideoId()}` }
             title="recipe video"
           />}
           <button
+            className="button"
             data-testid="finish-recipe-btn"
             type="button"
             disabled={ btnDisable }

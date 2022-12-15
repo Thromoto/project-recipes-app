@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import ShareButton from '../components/ShareButton';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
+import iconHeart from '../images/iconHeart.svg';
 import Loading from '../components/Loading';
 import allFoods from '../images/allFoods.svg';
 import drinks from '../images/drinks.svg';
@@ -123,7 +124,7 @@ function FavoriteRecipes() {
                         >
                           <img
                             data-testid={ `${index}-horizontal-favorite-btn` }
-                            src={ blackHeartIcon }
+                            src={ iconHeart }
                             alt="favorite icon"
                           />
                         </button>

@@ -202,7 +202,7 @@ function RecipeDetails() {
                 </div>
               </div>
             </div>
-            <p className="recipe-title" data-testid="recipe-title">{recipe[`str${category}`]}</p>
+            <p className="recipe-titles" data-testid="recipe-title">{recipe[`str${category}`]}</p>
           </div>
 
           <div className="content">
@@ -237,7 +237,7 @@ function RecipeDetails() {
               category={ category }
               recomendations={ recomendations }
             />}
-            
+
             { !isDone() && (
               <button
                 className="button"

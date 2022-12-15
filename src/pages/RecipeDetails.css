@@ -1,12 +1,13 @@
 .details {
   font-family: 'Epilogue';
   overflow: hidden;
-  width: 100%;
+  max-width: 100vw;
+  min-height: 200vh;
 }
 
 .content {
-  width: 90%;
-  margin-inline: auto;
+  margin: auto;
+  width: 90vw;
 }
 
 .details-header {

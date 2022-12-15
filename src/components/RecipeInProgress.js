@@ -4,6 +4,7 @@ import shareIconGreen from '../images/shareIconGreen.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import './RecipeInProgress.css';
+import Loading from './Loading';
 
 function RecipeInProgress() {
   const history = useHistory();
@@ -17,6 +18,8 @@ function RecipeInProgress() {
   const [copied, setCopied] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const [doneRecipes, setDoneRecipes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const loadingTime = 1500;
 
   const getFavorites = () => {
     const data = localStorage.getItem('favoriteRecipes') || [];
@@ -48,6 +51,7 @@ function RecipeInProgress() {
     }
     getFavorites();
     getDoneRecipes();
+    setTimeout(() => setIsLoading(false), loadingTime);
   }, []);
 
   const getVideoId = () => {
@@ -179,6 +183,12 @@ function RecipeInProgress() {
     localStorage.setItem('doneRecipes', JSON.stringify([...doneRecipes, recipeToSave]));
     history.push('/done-recipes');
   };
+
+  if (isLoading) {
+    return (
+      <Loading />
+    );
+  }
 
   return (
     <div className="in-progress">

@@ -4,6 +4,7 @@
 
 .in-progress {
   font-family: 'Epilogue';
+  min-height: 200vh;
 }
 
 .in-progress .category {

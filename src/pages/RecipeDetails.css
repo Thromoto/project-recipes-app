@@ -1,13 +1,19 @@
+.details {
+  font-family: 'Epilogue';
+}
+
+.content {
+  width: 90%;
+  margin-inline: auto;
+}
+
 .details .details-header {
-  width: 100vw;
   height: 20vh;
   display: flex;
   flex-direction: column;
-  background-color: blue;
   font-size: 20px;
-  font-family: 'Epilogue';
   font-weight: 700;
-  color: var(--main-primary-color-light);
+  color: var(--logo-color);
 }
 
 .details .thumb {
@@ -16,6 +22,7 @@
   object-fit: cover;
   overflow: hidden;
   position: relative;
+  filter: blur(3px) brightness(60%);
 }
 
 .details .recipe-title {
@@ -24,6 +31,13 @@
   margin-top: 4rem;
   width: 100%;
   z-index: 2;
+}
+
+.details .buttons-container {
+  position: absolute;
+  width: 100%;
+  top: 1rem;
+  left: 80%;
 }
 
 .details .header-content {
@@ -36,4 +50,36 @@
 .details .row {
   display: flex;
   width: 100vw;
+}
+
+.details .category {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.details .video {
+  width: 100%;
+}
+
+.details p {
+  margin: 0;
+}
+
+.text-card {
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  margin: auto;
+  background-color: var(--main-primary-color-light);
+}
+
+.sub-title {
+  font-weight: 700;
+  color: var(--main-primary-color-light);
+  margin-top: 2rem;
+}
+
+.details .button{
+  margin-block: 2rem;
+  width: 100%;
 }

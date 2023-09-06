@@ -24,7 +24,7 @@ git clone git@github.com:Thromoto/project-recipes-app.git
 
 3 - Instale as dependências do projeto
 ```bash
-npm install my-project
+npm install
 ```
 4 - Inicie a aplicação
 ```bash

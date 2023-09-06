@@ -1,8 +1,9 @@
+/* eslint-disable react/jsx-max-depth */
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import ShareButton from '../components/ShareButton';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+// import blackHeartIcon from '../images/blackHeartIcon.svg';
 import iconHeart from '../images/iconHeart.svg';
 import Loading from '../components/Loading';
 import allFoods from '../images/allFoods.svg';
@@ -102,9 +103,17 @@ function FavoriteRecipes() {
                       alt="recipe"
                     />
                     <div className="details-food-fav">
-                      <p className="recipe-name" data-testid={ `${index}-horizontal-name` }>{recipe.name}</p>
+                      <p
+                        className="recipe-name"
+                        data-testid={ `${index}-horizontal-name` }
+                      >
+                        {recipe.name}
+                      </p>
                       {recipe.type !== 'drink' ? (
-                        <p className="recipe-nationality" data-testid={ `${index}-horizontal-top-text` }>
+                        <p
+                          className="recipe-nationality"
+                          data-testid={ `${index}-horizontal-top-text` }
+                        >
                           {`${recipe.nationality} - ${recipe.category}`}
                         </p>
                       )
